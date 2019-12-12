@@ -9,7 +9,7 @@
 using namespace std;
 
 Hitable *random_scene() {
-	int n = 500;
+	int n = 50000;
 	Hitable **list = new Hitable*[n + 1];
 	list[0] = new Sphere(Vector3(0, -1000, 0), 1000, new Lambertian(Vector3(0.2, 0.5, 0.3)));
 	int i = 1;
@@ -79,8 +79,8 @@ int main()
 	// Set up output file.
 	ofstream file;
 	file.open("sample.ppm");
-	int nx = 320; // width
-	int ny = 240; // height
+	int nx = 1200; // width
+	int ny = 800; // height
 	file << "P3\n" << nx << " " << ny << "\n255\n"; // ppm header.
 
 	// Set up objects.
@@ -93,7 +93,7 @@ int main()
 	float aperture = 0.0;
 	Camera cam(lookfrom, lookat, Vector3(0,1,0), 20, float(nx)/float(ny), aperture, dist_to_focus, 0.0, 1.0);
 
-	int ns = 10; // Number of antialiasing samples.
+	int ns = 16; // Number of antialiasing samples.
 
 	for (int j = ny - 1; j >= 0; j--) { // Each row
 		for (int i = 0; i < nx; i++) { // Each column
