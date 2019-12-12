@@ -13,11 +13,9 @@ Vector3 random_in_unit_disk() {
 class Camera {
 public:
 	Camera(Vector3 lookfrom, Vector3 lookat, Vector3 vup, 
-		float vfov, 
-		float aspect, 
-		float aperture, 
-		float focus_dist,
-		float t0, float t1) { // vfov is top to bottom in degrees.
+		float vfov, // vfov is top to bottom in degrees.
+		float aspect, float aperture, float focus_dist,
+		float t0, float t1) { 
 
 		time0 = t0;
 		time1 = t1;
@@ -41,7 +39,7 @@ public:
 		Vector3 rd = lens_radius * random_in_unit_disk();
 		Vector3 offset = u * rd.x() + v * rd.y();
 		float time = time0 + random_double()*(time1 - time0);
-		return Ray(origin + offset, lower_left_corner + s*horizontal + t*vertical - origin - offset);
+		return Ray(origin + offset, lower_left_corner + s*horizontal + t*vertical - origin - offset, time);
 	}
 
 	Vector3 origin;

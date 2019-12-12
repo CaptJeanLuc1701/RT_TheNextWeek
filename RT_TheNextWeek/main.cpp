@@ -79,8 +79,8 @@ int main()
 	// Set up output file.
 	ofstream file;
 	file.open("sample.ppm");
-	int nx = 640; // width
-	int ny = 480; // height
+	int nx = 320; // width
+	int ny = 240; // height
 	file << "P3\n" << nx << " " << ny << "\n255\n"; // ppm header.
 
 	// Set up objects.
